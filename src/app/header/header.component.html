@@ -1,0 +1,25 @@
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" >Welcome {{userName}}</a>
+
+  <form class="form-inline my-2 my-lg-0">
+
+    <div *ngIf="auth_status;else guest ">
+      <a href="#" class="btn btn-success" tabindex="-1" role="button" routerLink="/add" style="float:right">Add Your Own Listing</a>
+       <a href="#" class="btn btn-danger" tabindex="-1" role="button" routerLink="/wishlist" style="float:right">Wishlist</a>
+     <!--  <a href="#" class="btn btn-outline-success" tabindex="-1" role="button" style="float:right" style="float:right">Logout</a> -->
+      <!-- iska button bna -->
+      <!-- <button class = "btn btn-success" (click)="onWish()"style="float:right" >Wishlist</button> -->
+      <button class = "btn btn-success" (click)="onLogout()"style="float:right" >Logout</button>
+    </div>
+
+    <ng-template #guest>
+      <div>
+        <a href="#" class="btn btn-primary" tabindex="-1" role="button" routerLink="/login">Login</a>
+        <a href="#" class="btn btn-success" tabindex="-1" role="button" routerLink="/signup">Signup</a>
+
+      </div>
+    </ng-template>
+
+  </form>
+</nav>

@@ -1,0 +1,46 @@
+
+<mat-card style="background-color: #e3f2fd;" >
+
+  <form (submit)="onAdd(addForm)" #addForm="ngForm" >
+
+      <mat-form-field>
+          <input matInput name="seller" ngModel type="text" placeholder="Your Name" #sellerInput="ngModel" required>
+          <mat-error *ngIf="sellerInput">invalid name</mat-error>
+        </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput name="name" ngModel type="text" placeholder="Book-Name" #nameInput="ngModel" required>
+      <mat-error *ngIf="nameInput">invalid book name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="author" ngModel type="text" placeholder="Author-Name" #authorInput="ngModel" required>
+      <mat-error *ngIf="authorInput.invalid">invalid author name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput name="price" ngModel type="number" placeholder="price" #priceInput="ngModel" required>
+        <mat-error *ngIf="priceInput.invalid">invalid price</mat-error>
+      </mat-form-field>
+
+    <mat-form-field>
+        <input matInput name="imageUrl" ngModel type="text" placeholder="imageUrl" >
+
+      </mat-form-field>
+
+    <mat-form-field>
+        <mat-select  [(ngModel)]="selectedCondition" [ngModelOptions]="{standalone: true}" placeholder="Select Book Condition" required>
+
+          <mat-option value="New">New</mat-option>
+          <mat-option value="Almost New">Almost New</mat-option>
+          <mat-option value="Slight Damage">Slight Damage</mat-option>
+          <mat-option value="Worn">Worn</mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+    <button mat-raised-button color="accent" type="submit">Add Listing</button>
+  </form>
+</mat-card>

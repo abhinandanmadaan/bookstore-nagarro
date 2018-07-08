@@ -1,0 +1,73 @@
+
+<app-header> </app-header>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" >
+
+
+  <form class="form-inline my-2 my-lg-0" style="background-color: #e3f2fd;">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search here" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" >
+
+        <div></div>
+
+      <mat-form-field>
+          <mat-select  [(ngModel)]="selectedCondition" [ngModelOptions]="{standalone: true}" placeholder="Select Book Condition" >
+
+              <mat-option value="New">New</mat-option >
+              <mat-option value="Almost New">Almost New</mat-option>
+              <mat-option value="Slight Damage">Slight Damage</mat-option>
+              <mat-option value="Worn">Worn</mat-option>
+              <mat-option value="No Filter">No Filter</mat-option>
+
+            </mat-select>
+
+      </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-select [(ngModel)]="selectedPrice" [ngModelOptions]="{standalone: true}" placeholder="Select Price Range">
+
+                <mat-option value= "less than 250">less than 250</mat-option>
+                <mat-option value="250-500">250-500</mat-option>
+                <mat-option value="500-1000">500-1000</mat-option>
+                <mat-option value="greater than 1000">greater than 1000</mat-option>
+                <mat-option value="No Filter">No Filter</mat-option>
+
+              </mat-select>
+        </mat-form-field>
+
+    </form>
+
+  </nav>
+
+                     <hr><hr>
+<!--          HEADER OVER                                                -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="card-columns">
+
+       <div class="card border-dark mb-3" style="max-width: 18rem;" *ngFor = "let book of books | filterSearch : searchText  | filterCondition : selectedCondition | filterPrice : selectedPrice    ">
+
+
+          <div class="card-body">
+          <h5 class="card-title">{{book.name}} </h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{book.author}} </h6>
+          <img class="card-img-top" [src]="book.img" alt="Card image cap" height="250">
+             <hr>
+          <p class="card-text">Rs. {{book.price}} </p>
+          <p class="card-text">condition: {{book.condition}}</p>
+           <button class = "btn btn-success" (click)="listing_item(book.id)">See More</button>
+        </div>
+      </div>
+       </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>

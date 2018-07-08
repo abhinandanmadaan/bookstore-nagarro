@@ -1,0 +1,41 @@
+
+<mat-card style="background-color: #e3f2fd;" >
+
+  <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+
+    <mat-form-field>
+      <input matInput name="name" ngModel type="text" placeholder="Name" #nameInput="ngModel" required>
+      <mat-error *ngIf="nameInput">please enter valid name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="college" ngModel type="text" placeholder="College" #collegeInput="ngModel" required>
+      <mat-error *ngIf="collegeInput.invalid">invalid college name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="address" ngModel type="text" placeholder="Address" #addressInput="ngModel" required>
+      <mat-error *ngIf="addressInput.invalid">invalid address</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput name="phone" ngModel type="text" pattern="[0-9]*" minlength="10" maxlength="10" placeholder="Phone-Number"
+        #phnumInput="ngModel" required>
+      <span matPrefix>+91 &nbsp;</span>
+      <mat-error *ngIf="phnumInput.invalid">invalid Phone number</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+      <mat-error *ngIf="emailInput.invalid">Invalid email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+
+      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+      <mat-error *ngIf="passwordInput.invalid">invalid password.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="blue" type="submit">Signup</button>
+  </form>
+</mat-card>
